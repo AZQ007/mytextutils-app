@@ -4,13 +4,11 @@ import React, {useState} from 'react'
 
 export default function TextForm(props) {
     const handleUpClick = () => {
-       // console.log("Uppercase was clicked" + text);
         let newText = text.toUpperCase();
         setText(newText);
         props.showAlert("Converted to Uppercase!","success");
     }
     const handleOnChange = (event) => {
-        //console.log("On change");
         setText(event.target.value);
     }
     const handleLoClick = (event) => {
@@ -28,10 +26,7 @@ export default function TextForm(props) {
 
     }
     const handleCopy = () => {
-        var text = document.getElementById("myBox");
-        text.select();
-        navigator.clipboard.writeText(text.value);
-        document.getSelection().removeAllRanges();
+        navigator.clipboard.writeText(text);
         props.showAlert("Text is Copied!","success");
 
     }
@@ -72,7 +67,7 @@ export default function TextForm(props) {
         </div>
         <div className="container my-3" style={{color:props.mode==='dark'?'white':'#042743'}}>
             <h2>Your text summary</h2>
-            <p>{text.split(" ").filter((element)=>{return element.length!==0}).length} words and {text.replace(/\s+/g, '').length} characters</p>          
+            <p>{text.split(/\s+/).filter((element)=>{return element.length!==0}).length} words and {text.replace(/\s+/g, '').length} characters</p>          
             <p>{0.008 * text.split(" ").filter((element)=>{return element.length!==0}).length} Total minutes to read</p>
             <p>Total number of sentences is {text.split(".").length-1}</p>
             <h2 my-3>Preview</h2>

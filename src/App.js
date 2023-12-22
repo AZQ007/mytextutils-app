@@ -50,7 +50,7 @@ function App() {
 <BrowserRouter>
         <Navbar
           title="TextUtils"
-          aboutText="About Us"
+          aboutText="About"
           mode={mode}
           toggleMode={toggleMode}
         />
